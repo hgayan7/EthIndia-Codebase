@@ -7,12 +7,12 @@ The application is based on top of the Ethereum Blockchain.
 
 ## Objectives:
 
-> * 1.Solves the problem of land ownership transparency.
-
-> * 2.Preventing fraudulent selling/buying of land title ownership transfer.
-
-> * 3.On the go selling and buying of land.
-
+* 1.Solves the problem of land ownership transparency.
+------------ 
+* 2.Preventing fraudulent selling/buying of land title ownership transfer.
+------------ 
+* 3.On the go selling and buying of land.
+------------ 
 ## Token Information :
 
 >Token name - LAND
@@ -103,8 +103,9 @@ http://github.com - Demo
 
 ## Team members 
 
-> * Samujjal Das
+* Samujjal Das
 ------------ 
-> * Himshikhar Gayan
+* Himshikhar Gayan
 ------------ 
-> * Pranjit Medhi
+* Pranjit Medhi
+------------ 
