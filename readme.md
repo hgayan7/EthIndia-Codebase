@@ -8,11 +8,11 @@ The application is based on top of the Ethereum Blockchain.
 
 ## Objectives:
 
-* 1.Solving the problem of land ownership transparency.
+* Solving the problem of land ownership transparency.
 ------------ 
-* 2.Preventing fraudulent selling/buying of land.
+* Preventing fraudulent selling/buying of land.
 ------------ 
-* 3.To provide on the go selling and buying of land.
+* To provide on the go selling and buying of land.
 ------------ 
 ## Token Information :
 
