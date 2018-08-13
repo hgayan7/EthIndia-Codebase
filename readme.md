@@ -77,7 +77,7 @@ The seller account also gets updated to the latest changes of his land.
 The area of land is made equivalent to a Liquidity Token that is not related to the outer market and can only be accessed for this purposre.
 
 ## Technologies Used:
-> PFS
+> IPFS
 
 > npm
 
