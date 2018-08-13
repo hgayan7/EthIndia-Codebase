@@ -8,11 +8,11 @@ The application is based on top of the Ethereum Blockchain.
 
 ## Objectives:
 
-* 1.Solves the problem of land ownership transparency.
+* 1.Solving the problem of land ownership transparency.
 ------------ 
-* 2.Preventing fraudulent selling/buying of land title ownership transfer.
+* 2.Preventing fraudulent selling/buying of land.
 ------------ 
-* 3.On the go selling and buying of land.
+* 3.To provide on the go selling and buying of land.
 ------------ 
 ## Token Information :
 
@@ -86,6 +86,8 @@ The area of land is made equivalent to a Liquidity Token that is not related to 
 > Ganache-cli
 
 > Remix IDE
+
+> Google maps API
 
 ## How to use
 
