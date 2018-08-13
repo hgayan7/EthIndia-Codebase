@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>User Page</title>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+<p></p>
+<div class="container-fluid">
+	<nav class="navbar  navbar-inverse navbar-fixed-top">
+  <a class="navbar-brand" href="#">Land Network</a>
+</nav>
+
+<br><br><br><br>
+
+<div class ="row">
+  	<div class="col-lg-2 side-view">
+			<ul  class="nav nav-pills nav-stacked">
+				<li><h2 class="side-view-head text-center">User Page</h2></li><br>
+				<li><a href="user0.html" onclick="Sell();"  value="Register Land">
+				&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;<span class="glyphicon glyphicon-briefcase"></span>
+				&nbsp;&nbsp;Sell</a></li>
+				<li><a href="user0.html"  onclick="Buy();" value="register Owner">
+				&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;<span class="glyphicon glyphicon-shopping-cart"></span>
+				&nbsp;&nbsp;Buy</a></li>
+				<li><a href="home/home.html"  value="Ipfs">
+				&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;<span class="glyphicon glyphicon-shopping-cart"></span>
+				&nbsp;&nbsp;Upload to Ipfs</a></li>
+				<li><a href="ipfs.html"  value="Ipfs">
+				&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;<span class="glyphicon glyphicon-shopping-cart"></span>
+				&nbsp;&nbsp;Update Ipfs details</a></li>
+			</ul>
+		</div>
+	<div class="col-lg-6 col-lg-offset-4">
+  <h2>Upload Land Certificate To IPFS</h2>
+  <label for="buyeraddress" > Buyer Address</label>
+  <input class="form-control" id="buyeraddress" type="text">
+  <label for="owneraddress" >Owner Address</label>
+  <input class="form-control"  id="owneraddress"type="text" >
+  <label for="hash1" >IPFS Hash 1</label>
+  <input class="form-control"  id="hash1"type="text">
+  <label for="hash2" >IPFS Hash 2</label>
+  <input class="form-control"  id="hash2" type="text"><br>
+  
+  <button class="btn btn-success" id="upload">Upload</button>
+
+</div>
+</div>
+</div>
+
+  
+<script src="https://cdn.rawgit.com/ethereum/web3.js/develop/dist/web3.js"></script>
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+
+    <script>
+        
+        if(typeof web3 !=='undefined')
+        {
+                web3 = new Web3(web3.currentProvider);
+        }
+        else{
+                web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+        }
+        web3.eth.defaultAccount = web3.eth.accounts[2];
+
+        var Contract = web3.eth.contract(
+			[
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_buyerAddress",
+				"type": "address"
+			},
+			{
+				"name": "_sellerAddress",
+				"type": "address"
+			},
+			{
+				"name": "_ethValue",
+				"type": "uint256"
+			}
+		],
+		"name": "buyTokens",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": true,
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_ownerAddress",
+				"type": "address"
+			},
+			{
+				"name": "_landPrice",
+				"type": "uint256"
+			}
+		],
+		"name": "forSale",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_ownerAddress",
+				"type": "address"
+			}
+		],
+		"name": "notforSale",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_ownerAddress",
+				"type": "address"
+			},
+			{
+				"name": "_buyerAddress",
+				"type": "address"
+			},
+			{
+				"name": "_landAddress",
+				"type": "string"
+			},
+			{
+				"name": "c1",
+				"type": "uint256"
+			},
+			{
+				"name": "c2",
+				"type": "uint256"
+			},
+			{
+				"name": "c3",
+				"type": "uint256"
+			},
+			{
+				"name": "c4",
+				"type": "uint256"
+			},
+			{
+				"name": "ethValue",
+				"type": "uint256"
+			}
+		],
+		"name": "processBuy",
+		"outputs": [],
+		"payable": true,
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_buyerAddress",
+				"type": "address"
+			},
+			{
+				"name": "_ownerAddress",
+				"type": "address"
+			},
+			{
+				"name": "hash1",
+				"type": "string"
+			},
+			{
+				"name": "hash2",
+				"type": "string"
+			}
+		],
+		"name": "processIpfs",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_sellerAddress",
+				"type": "address"
+			},
+			{
+				"name": "ethValue",
+				"type": "uint256"
+			}
+		],
+		"name": "processTransaction",
+		"outputs": [],
+		"payable": true,
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_ownerAddress",
+				"type": "address"
+			},
+			{
+				"name": "_coordinate1",
+				"type": "uint256"
+			},
+			{
+				"name": "_coordinate2",
+				"type": "uint256"
+			},
+			{
+				"name": "_coordinate3",
+				"type": "uint256"
+			},
+			{
+				"name": "_coordinate4",
+				"type": "uint256"
+			},
+			{
+				"name": "_token",
+				"type": "uint256"
+			},
+			{
+				"name": "_landAddress",
+				"type": "string"
+			},
+			{
+				"name": "_area",
+				"type": "uint256"
+			},
+			{
+				"name": "hashV",
+				"type": "string"
+			}
+		],
+		"name": "registerData",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_ownerAddress",
+				"type": "address"
+			},
+			{
+				"name": "c1",
+				"type": "uint256"
+			},
+			{
+				"name": "c2",
+				"type": "uint256"
+			},
+			{
+				"name": "c3",
+				"type": "uint256"
+			},
+			{
+				"name": "c4",
+				"type": "uint256"
+			},
+			{
+				"name": "area",
+				"type": "uint256"
+			}
+		],
+		"name": "saleData",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_to",
+				"type": "address"
+			},
+			{
+				"name": "area",
+				"type": "uint256"
+			}
+		],
+		"name": "transfer",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"name": "_from",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"name": "_to",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "value",
+				"type": "uint256"
+			}
+		],
+		"name": "Transfer",
+		"type": "event"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "balanceOf",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "area",
+				"type": "uint256"
+			}
+		],
+		"name": "calculateValue",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "pure",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "_address",
+				"type": "address"
+			}
+		],
+		"name": "checkEthBalance",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "forSaleData",
+		"outputs": [
+			{
+				"name": "coor1",
+				"type": "uint256"
+			},
+			{
+				"name": "coor2",
+				"type": "uint256"
+			},
+			{
+				"name": "coor3",
+				"type": "uint256"
+			},
+			{
+				"name": "coor4",
+				"type": "uint256"
+			},
+			{
+				"name": "area",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "_address",
+				"type": "address"
+			}
+		],
+		"name": "getcoordinate",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "_address",
+				"type": "address"
+			}
+		],
+		"name": "getlanddata",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "_ownerAddress",
+				"type": "address"
+			}
+		],
+		"name": "getLandPrice",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getMsgSender",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "_ownerAddress",
+				"type": "address"
+			}
+		],
+		"name": "getSaleData",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "_ownerAddress",
+				"type": "address"
+			}
+		],
+		"name": "getTokenInfo",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "hashValue",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "isForSale",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "isRegistered",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "isSaleData",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "landData",
+		"outputs": [
+			{
+				"name": "coordinate1",
+				"type": "uint256"
+			},
+			{
+				"name": "coordinate2",
+				"type": "uint256"
+			},
+			{
+				"name": "coordinate3",
+				"type": "uint256"
+			},
+			{
+				"name": "coordinate4",
+				"type": "uint256"
+			},
+			{
+				"name": "token",
+				"type": "uint256"
+			},
+			{
+				"name": "landAddress",
+				"type": "string"
+			},
+			{
+				"name": "id",
+				"type": "uint256"
+			},
+			{
+				"name": "area",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "landPrice",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "name",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "readyForIpfsEntry",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "symbol",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "totalSupply",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	}
+]);
+
+var myContract =Contract.at('0x2edf9455e3336fb9745b028405a91ac88979ada0');
+
+console.log(myContract);
+
+
+
+  
+
+$("#saledata").click(function()  {
+
+         myContract.processIpfs($("#buyeraddress").val(), $("#owneraddress").val()
+         , $("#hash1").val(), $("#hash2").val(),
+         {from:web3.eth.defaultAccount, gas:4047010},function(err,res){
+             if(!err){
+                 alert("Upload To IPFS?");
+             }
+             else{console.log(err);}
+         });
+ })
+
+   
+		
+
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,1000 @@
+<html>
+<head>
+  <meta charset="utf-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Map</title>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+  <!-- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
+</head>
+    <body>
+      <nav class="navbar  navbar-inverse navbar-fixed-top">
+       <a class="navbar-brand" href="#">Land Network</a>
+      </nav><br><br><br><p></p>
+      <div class="container">
+        <div class="row">
+      <div class="col-lg-2 side-view"><!--side panel-->
+  <ul  class="nav nav-pills nav-stacked ">
+        <li><h2 class="side-view-head text-center" >Admin Page</h2></li><br>
+        <li><a href="home.html" value="Home">
+        <span class="glyphicon glyphicon-th"></span>
+        &nbsp; Home</a></li>
+        <li><a href="admin.html"   value="Register Land">
+        <span class="glyphicon glyphicon-th"></span>
+        &nbsp; Register Land</a></li>
+        <li><a  href="analysis.html" value="view-record">
+        <span class="glyphicon glyphicon-list-alt"></span>
+        &nbsp;Analysis</a></li>
+        <li><a href="#"  class="active" value="register Owner">
+        <span class="glyphicon glyphicon-map-marker"></span>
+        &nbsp;Map</a></li>
+      </ul>
+    </div><!-- end of side panel-->
+    
+      
+      <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+        <div id = "map" style="width:90%;height:80%;"></div>
+
+         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script> 
+
+
+<script src="https://cdn.rawgit.com/ethereum/web3.js/develop/dist/web3.js"></script>
+
+
+
+        <script>
+          
+  if(typeof web3 !=='undefined')
+        {
+                web3 = new Web3(web3.currentProvider);
+        }
+        else{
+                web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+        }
+        web3.eth.defaultAccount = web3.eth.accounts[2];
+
+        var Contract = web3.eth.contract(
+     [
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_buyerAddress",
+        "type": "address"
+      },
+      {
+        "name": "_sellerAddress",
+        "type": "address"
+      },
+      {
+        "name": "_ethValue",
+        "type": "uint256"
+      }
+    ],
+    "name": "buyTokens",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "payable": true,
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_ownerAddress",
+        "type": "address"
+      },
+      {
+        "name": "_landPrice",
+        "type": "uint256"
+      }
+    ],
+    "name": "forSale",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_ownerAddress",
+        "type": "address"
+      }
+    ],
+    "name": "notforSale",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_ownerAddress",
+        "type": "address"
+      },
+      {
+        "name": "_buyerAddress",
+        "type": "address"
+      },
+      {
+        "name": "_landAddress",
+        "type": "string"
+      },
+      {
+        "name": "c1",
+        "type": "uint256"
+      },
+      {
+        "name": "c2",
+        "type": "uint256"
+      },
+      {
+        "name": "c3",
+        "type": "uint256"
+      },
+      {
+        "name": "c4",
+        "type": "uint256"
+      },
+      {
+        "name": "ethValue",
+        "type": "uint256"
+      }
+    ],
+    "name": "processBuy",
+    "outputs": [],
+    "payable": true,
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_buyerAddress",
+        "type": "address"
+      },
+      {
+        "name": "_ownerAddress",
+        "type": "address"
+      },
+      {
+        "name": "hash1",
+        "type": "string"
+      },
+      {
+        "name": "hash2",
+        "type": "string"
+      }
+    ],
+    "name": "processIpfs",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_sellerAddress",
+        "type": "address"
+      },
+      {
+        "name": "ethValue",
+        "type": "uint256"
+      }
+    ],
+    "name": "processTransaction",
+    "outputs": [],
+    "payable": true,
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_ownerAddress",
+        "type": "address"
+      },
+      {
+        "name": "_coordinate1",
+        "type": "uint256"
+      },
+      {
+        "name": "_coordinate2",
+        "type": "uint256"
+      },
+      {
+        "name": "_coordinate3",
+        "type": "uint256"
+      },
+      {
+        "name": "_coordinate4",
+        "type": "uint256"
+      },
+      {
+        "name": "_token",
+        "type": "uint256"
+      },
+      {
+        "name": "_landAddress",
+        "type": "string"
+      },
+      {
+        "name": "_area",
+        "type": "uint256"
+      },
+      {
+        "name": "hashV",
+        "type": "string"
+      }
+    ],
+    "name": "registerData",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_ownerAddress",
+        "type": "address"
+      },
+      {
+        "name": "c1",
+        "type": "uint256"
+      },
+      {
+        "name": "c2",
+        "type": "uint256"
+      },
+      {
+        "name": "c3",
+        "type": "uint256"
+      },
+      {
+        "name": "c4",
+        "type": "uint256"
+      },
+      {
+        "name": "area",
+        "type": "uint256"
+      }
+    ],
+    "name": "saleData",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_to",
+        "type": "address"
+      },
+      {
+        "name": "area",
+        "type": "uint256"
+      }
+    ],
+    "name": "transfer",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "name": "_from",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "name": "_to",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "name": "value",
+        "type": "uint256"
+      }
+    ],
+    "name": "Transfer",
+    "type": "event"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "balanceOf",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "area",
+        "type": "uint256"
+      }
+    ],
+    "name": "calculateValue",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "pure",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "_address",
+        "type": "address"
+      }
+    ],
+    "name": "checkEthBalance",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "forSaleData",
+    "outputs": [
+      {
+        "name": "coor1",
+        "type": "uint256"
+      },
+      {
+        "name": "coor2",
+        "type": "uint256"
+      },
+      {
+        "name": "coor3",
+        "type": "uint256"
+      },
+      {
+        "name": "coor4",
+        "type": "uint256"
+      },
+      {
+        "name": "area",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "_address",
+        "type": "address"
+      }
+    ],
+    "name": "getcoordinate",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "_address",
+        "type": "address"
+      }
+    ],
+    "name": "getlanddata",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "name": "",
+        "type": "string"
+      },
+      {
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "_ownerAddress",
+        "type": "address"
+      }
+    ],
+    "name": "getLandPrice",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "getMsgSender",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "_ownerAddress",
+        "type": "address"
+      }
+    ],
+    "name": "getSaleData",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "_ownerAddress",
+        "type": "address"
+      }
+    ],
+    "name": "getTokenInfo",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "hashValue",
+    "outputs": [
+      {
+        "name": "",
+        "type": "string"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "isForSale",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "isRegistered",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "isSaleData",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "landData",
+    "outputs": [
+      {
+        "name": "coordinate1",
+        "type": "uint256"
+      },
+      {
+        "name": "coordinate2",
+        "type": "uint256"
+      },
+      {
+        "name": "coordinate3",
+        "type": "uint256"
+      },
+      {
+        "name": "coordinate4",
+        "type": "uint256"
+      },
+      {
+        "name": "token",
+        "type": "uint256"
+      },
+      {
+        "name": "landAddress",
+        "type": "string"
+      },
+      {
+        "name": "id",
+        "type": "uint256"
+      },
+      {
+        "name": "area",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "landPrice",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "name",
+    "outputs": [
+      {
+        "name": "",
+        "type": "string"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "readyForIpfsEntry",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "symbol",
+    "outputs": [
+      {
+        "name": "",
+        "type": "string"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "totalSupply",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  }
+]);
+
+var myContract =Contract.at('0x2edf9455e3336fb9745b028405a91ac88979ada0');
+
+console.log(myContract);
+    var lat1;
+    var lng1;
+    var lat2;
+    var lng2;
+    var lat3;
+    var lng3;
+    var lat4;
+    var lng4;
+
+        var drawingManager;
+        var data0 = [];
+        var success =false;
+
+
+   var myaddress=web3.eth.accounts[2];
+   myContract.getcoordinate(myaddress, function(error,result){
+             if(!error){
+              var c1=result[0];
+              var c2=result[1];
+              var c3=result[2];
+              var c4=result[3];
+lat1=c1/1000000;
+lng1=(c1%1000000)/10000;
+lat2=c2/1000000;
+lng2=(c2%1000000)/10000;
+lat3=c3/1000000;
+lng3=(c3%1000000)/10000;
+lat4=c4/1000000;
+lng4=(c4%1000000)/10000;
+
+
+}})
+
+function calc(num){
+  var arr = [];
+  var a =num.toString();
+  var b ;
+ for(var i=0;i<a.length;i++)
+  {
+    if(!(i==1)||!(i==2))
+      {
+        arr.push(a[i]);
+        
+      }
+  }
+  return arr;
+
+}
+        //creates the JSON file
+        function addCoordinates(lat1,lng1,lat2,lng2,lat3,lng3,lat4,lng4){
+           
+            var users = {"lat1": lat1,"lng1":lng1,
+                         "lat2":lat2,"lng2":lng2,
+                         "lat3":lat3,"lng3":lng3,
+                         "lat4":lat4,"lng4":lng4
+                     }
+
+            data0.push(users);
+            
+        }
+
+        function addMarkers(){
+           // var c = 26.144;
+            //var d = 91.77;
+            //var e =0.00005;
+            for(var i=0;i<2;i++){
+                addCoordinates(lat1,lng1,lat2,lng2,lat3,lng3,lat4,lng4);
+              //  e = e+0.005;
+            }
+            success =true;
+             initMap();
+            return data0;
+        }
+        
+
+        var polygon = null;
+
+        function initMap(){
+            
+            map = new google.maps.Map(document.getElementById('map'),{
+                center:{lat:
+26.911234, lng:91.1234},
+                zoom:10
+
+            });
+            
+// 
+
+
+      // search box
+   //    var input = document.getElementById('pac-input');
+   // //   var searchBox = new google.maps.places.SearchBox(input);
+   //    map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+      // Bias the SearchBox results towards current map's viewport.
+      // map.addListener('bounds_changed', function() {
+      //   searchBox.setBounds(map.getBounds());
+      // });
+
+      // var markers = [];
+      // // Listen for the event fired when the user selects a prediction and retrieve
+      // more details for that place.
+      // searchBox.addListener('places_changed', function() {
+      //   var places = searchBox.getPlaces();
+
+      //   if (places.length == 0) {
+      //     return;
+      //   }
+
+      //   // Clear out the old markers.
+      //   markers.forEach(function(marker) {
+      //     marker.setMap(null);
+      //   });
+        // markers = [];
+
+      //   // For each place, get the icon, name and location.
+      //   var bounds = new google.maps.LatLngBounds();
+      //   places.forEach(function(place) {
+      //     if (!place.geometry) {
+      //       console.log("Returned place contains no geometry");
+      //       return;
+      //     }
+      //     var icon = {
+      //       url: place.icon,
+      //       size: new google.maps.Size(71, 71),
+      //       origin: new google.maps.Point(0, 0),
+      //       anchor: new google.maps.Point(17, 34),
+      //       scaledSize: new google.maps.Size(25, 25)
+      //     };
+
+      //     // Create a marker for each place.
+      //     markers.push(new google.maps.Marker({
+      //       map: map,
+      //       icon: icon,
+      //       title: place.name,
+      //       position: place.geometry.location
+      //     }));
+
+      //     if (place.geometry.viewport) {
+      //       // Only geocodes have viewport.
+      //       bounds.union(place.geometry.viewport);
+      //     } else {
+      //       bounds.extend(place.geometry.location);
+      //     }
+      //   });
+      //   map.fitBounds(bounds);
+      // });
+      // end of searchBox
+
+
+            var rectangle;
+          //  var x= {lat:26.144 , lng: 91.77};
+          //  var marker = new google.maps.Marker({
+        //        position:x,
+         //       map:map 
+         //   }); 
+            
+            drawingManager = new google.maps.drawing.DrawingManager({
+                drawingMode: google.maps.drawing.OverlayType.POLYGON,
+            });
+            
+            if(success){
+
+                for(var i=0;i<2;i++){
+              
+               // var latLng = new google.maps.LatLng(data0[i].lat,data0[i].lng);
+              //  var marker = new google.maps.Marker({
+               //     position: latLng,
+               //     map: map
+                
+                //draws the rectangles
+                 rectangle=new google.maps.Polygon({
+
+                  // paths:[{"lat1": lat1,"lng1":lng1,
+                  //        "lat2":lat2,"lng2":lng2,
+                  //        "lat3":lat3,"lng3":lng3,
+                  //        "lat4":lat4,"lng4":lng4,
+                  //        "lat1": lat1,"lng1":lng1
+                  //    }],
+                    paths: [{lat:data0[i].lat1,lng:data0[i].lng1},
+                             {lat:data0[i].lat2,lng:data0[i].lng2},
+                             {lat:data0[i].lat3,lng:data0[i].lng3},
+                           {lat:data0[i].lat4,lng:data0[i].lng4},
+                             {lat:data0[i].lat1,lng:data0[i].lng1}
+                             ],
+                    strokeColor: '#FF0000',
+                    strokeOpacity: 0.8,
+                    strokeWeight: 2,
+                    fillColor: '#FF0000',
+                    fillOpacity: 0.35
+                });
+
+
+              //  });
+            }
+
+            //adds info window
+            var infowindow = new google.maps.InfoWindow({
+                content: "Sample Text"
+                 });
+
+            var marker = new google.maps.Marker({
+                 position: {lat:26.144, lng:91.77},   
+                 map: map,
+                 
+                });
+             marker.addListener('click', function() {
+             infowindow.open(map, marker);
+            });
+
+            //sets the map
+            rectangle.setMap(map);
+
+            //uncomment only if owner is about to sale land 
+          //  drawingManager.setMap(map);
+
+        }
+    }
+        </script>
+
+<script  src="https://maps.googleapis.com/maps/api/js?libraries=places,geometry,drawing&key=AIzaSyBspM2Cr614NwKQhfW-V-i0iRMMow1WBS0&v=3&callback=initMap"> 
+</script>
+    </body>
+</html>

@@ -1,0 +1,66 @@
+.side-view{
+	background-color:#151a60 ;
+	font-weight: bold;
+	margin-left:10px;
+	border-radius:5px;
+	height:700px;
+	color:#fff;
+	position: fixed;
+	margin-right: 20px;
+
+}
+
+@media only screen and (max-width: 768px) {
+		.side-view{
+			position: relative;
+			height:100%;
+		}
+	}
+.navbar{
+	font-weight:bold;
+	padding-top: 12px;
+	padding-bottom: 12px;
+	position: fixed;
+}
+h2, h3,a{
+	font-weight: bold;
+
+}
+.side-view-head{
+	font-size: 20px;
+}
+.active{
+	background-color: #EEE5E3;
+}
+body{
+	background:url('../image/law.jpg') no-repeat ;
+	background-size: cover;
+	background-attachment: fixed;
+
+	 /*filter: grayscale(100%);*/
+	  /*-webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);*/
+}
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #000;
+  width: 50px;
+  height: 50px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
