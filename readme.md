@@ -16,16 +16,16 @@ The application is based on top of the Ethereum Blockchain.
 ------------ 
 ## Token Information :
 
->Token name - LAND
+* Token name - LAND
 
->Token symbol - LND
+* Token symbol - LND
 
->Token type - Asset token(Here asset is land).
+* Token type - Asset token(Here asset is land).
 
->Tokens are distributed by the government at the time of registration based on the area of land owned by the owner. 
+* Tokens are distributed by the government at the time of registration based on the area of land owned by the owner. 
 1 square metre = 1 token.
 
->The contract considers a total of 1000 tokens which can only be bouught or transferred in exchange for ether.
+* The contract considers a total of 1000 tokens which can only be bouught or transferred in exchange for ether.
 
 
 ## Features:
