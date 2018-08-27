@@ -1,4 +1,6 @@
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/hgayan7/EthIndia-Codebase/blob/master/LICENSE)
+
 # Land Network
 
 ![eth](https://user-images.githubusercontent.com/29502161/44681121-5506f580-aa5d-11e8-8a17-a4c779d8adaf.png)
