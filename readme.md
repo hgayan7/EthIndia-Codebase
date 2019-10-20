@@ -118,12 +118,6 @@ http://github.com - Demo
 | [Himshikhar Gayan](https://github.com/hgayan7) <br> <img src="https://avatars2.githubusercontent.com/u/29502161?s=400&v=4" width="100" height="100">      | India                  | https://www.linkedin.com/in/himshikhargayan/                                                        |
 | [Pranjit Medhi](https://github.com/pranjit-medhi) <br> <img src="https://avatars3.githubusercontent.com/u/15957817?s=400&v=4" width="100" height="100">      | India                  |https://www.linkedin.com/in/pranjit-medhi-701a8baa/                                                    |
 
-* Samujjal Das
------------- 
-* Himshikhar Gayan
------------- 
-* Pranjit Medhi
------------- 
 
 [![](https://sourcerer.io/fame/hgayan7/hgayan7/EthIndia-Codebase/images/0)](https://sourcerer.io/fame/hgayan7/hgayan7/EthIndia-Codebase/links/0)[![](https://sourcerer.io/fame/hgayan7/hgayan7/EthIndia-Codebase/images/1)](https://sourcerer.io/fame/hgayan7/hgayan7/EthIndia-Codebase/links/1)[![](https://sourcerer.io/fame/hgayan7/hgayan7/EthIndia-Codebase/images/2)](https://sourcerer.io/fame/hgayan7/hgayan7/EthIndia-Codebase/links/2)[![](https://sourcerer.io/fame/hgayan7/hgayan7/EthIndia-Codebase/images/3)](https://sourcerer.io/fame/hgayan7/hgayan7/EthIndia-Codebase/links/3)[![](https://sourcerer.io/fame/hgayan7/hgayan7/EthIndia-Codebase/images/4)](https://sourcerer.io/fame/hgayan7/hgayan7/EthIndia-Codebase/links/4)[![](https://sourcerer.io/fame/hgayan7/hgayan7/EthIndia-Codebase/images/5)](https://sourcerer.io/fame/hgayan7/hgayan7/EthIndia-Codebase/links/5)[![](https://sourcerer.io/fame/hgayan7/hgayan7/EthIndia-Codebase/images/6)](https://sourcerer.io/fame/hgayan7/hgayan7/EthIndia-Codebase/links/6)[![](https://sourcerer.io/fame/hgayan7/hgayan7/EthIndia-Codebase/images/7)](https://sourcerer.io/fame/hgayan7/hgayan7/EthIndia-Codebase/links/7)
 
