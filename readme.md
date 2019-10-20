@@ -1,5 +1,11 @@
-[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/hgayan7/EthIndia-Codebase/issues)
+[![GitHub contributors](https://img.shields.io/github/contributors/Naereen/StrapDown.js.svg)](https://github.com/hgayan7/EthIndia-Codebase/graphs/contributors/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/hgayan7/EthIndia-Codebase/blob/master/LICENSE)
+[![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
+
 # Land Network
+
+![eth](https://user-images.githubusercontent.com/29502161/44681121-5506f580-aa5d-11e8-8a17-a4c779d8adaf.png)
 
 ## Our Hack:
 >Built a decentralised Land Title Ownership Dapp through which a land owner can sell his land to a peer without the involvement of government or any middlemen once registered.
@@ -105,8 +111,19 @@ http://github.com - Demo
 [Youtube link](https://www.youtube.com/watch?v=5oc1Clsxxzw)
 
 ## Team members 
+
 | Name                                                                                                                               | Country               |Where to find us<br>|
 |------------------------------------------------------------------------------------------------------------------------------------|-----------------------|------------------------------------------------------|
 | [Samujjal Das](https://github.com/SamujjalDas) <br> <img src="https://avatars3.githubusercontent.com/u/34987253?s=400&u=f2f4b3945a98dfd705565c8f049b3744825baf8d&v=4" width="100" height="100">      | India                  | https://www.linkedin.com/in/samujjalaec/                                                        |
 | [Himshikhar Gayan](https://github.com/hgayan7) <br> <img src="https://avatars2.githubusercontent.com/u/29502161?s=400&v=4" width="100" height="100">      | India                  | https://www.linkedin.com/in/himshikhargayan/                                                        |
 | [Pranjit Medhi](https://github.com/pranjit-medhi) <br> <img src="https://avatars3.githubusercontent.com/u/15957817?s=400&v=4" width="100" height="100">      | India                  |https://www.linkedin.com/in/pranjit-medhi-701a8baa/                                                    |
+
+* Samujjal Das
+------------ 
+* Himshikhar Gayan
+------------ 
+* Pranjit Medhi
+------------ 
+
+[![](https://sourcerer.io/fame/hgayan7/hgayan7/EthIndia-Codebase/images/0)](https://sourcerer.io/fame/hgayan7/hgayan7/EthIndia-Codebase/links/0)[![](https://sourcerer.io/fame/hgayan7/hgayan7/EthIndia-Codebase/images/1)](https://sourcerer.io/fame/hgayan7/hgayan7/EthIndia-Codebase/links/1)[![](https://sourcerer.io/fame/hgayan7/hgayan7/EthIndia-Codebase/images/2)](https://sourcerer.io/fame/hgayan7/hgayan7/EthIndia-Codebase/links/2)[![](https://sourcerer.io/fame/hgayan7/hgayan7/EthIndia-Codebase/images/3)](https://sourcerer.io/fame/hgayan7/hgayan7/EthIndia-Codebase/links/3)[![](https://sourcerer.io/fame/hgayan7/hgayan7/EthIndia-Codebase/images/4)](https://sourcerer.io/fame/hgayan7/hgayan7/EthIndia-Codebase/links/4)[![](https://sourcerer.io/fame/hgayan7/hgayan7/EthIndia-Codebase/images/5)](https://sourcerer.io/fame/hgayan7/hgayan7/EthIndia-Codebase/links/5)[![](https://sourcerer.io/fame/hgayan7/hgayan7/EthIndia-Codebase/images/6)](https://sourcerer.io/fame/hgayan7/hgayan7/EthIndia-Codebase/links/6)[![](https://sourcerer.io/fame/hgayan7/hgayan7/EthIndia-Codebase/images/7)](https://sourcerer.io/fame/hgayan7/hgayan7/EthIndia-Codebase/links/7)
+
