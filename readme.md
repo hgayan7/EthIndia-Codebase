@@ -105,7 +105,7 @@ http://github.com - Demo
 [Youtube link](https://www.youtube.com/watch?v=5oc1Clsxxzw)
 
 ## Team members 
-| Name                                                                                                                               | Country               |Where to find you<br>|
+| Name                                                                                                                               | Country               |Where to find us<br>|
 |------------------------------------------------------------------------------------------------------------------------------------|-----------------------|------------------------------------------------------|
 | [Samujjal Das](https://github.com/SamujjalDas) <br> <img src="https://avatars3.githubusercontent.com/u/34987253?s=400&u=f2f4b3945a98dfd705565c8f049b3744825baf8d&v=4" width="100" height="100">      | India                  | https://www.linkedin.com/in/samujjalaec/                                                        |
 | [Himshikhar Gayan](https://github.com/hgayan7) <br> <img src="https://avatars2.githubusercontent.com/u/29502161?s=400&v=4" width="100" height="100">      | India                  | https://www.linkedin.com/in/himshikhargayan/                                                        |
